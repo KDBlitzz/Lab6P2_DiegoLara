@@ -1,0 +1,75 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package lab6p2_diegolara;
+
+import java.util.Date;
+
+/**
+ *
+ * @author diego
+ */
+public class jugador {
+    private String nombre;
+    private String correo;
+    private String pais;
+    private double cash = 150000;
+    Date fecha = new Date();
+
+    public jugador() {
+    }
+
+    public jugador(String nombre, String correo, String pais, Date fecha) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.pais = pais;
+        this.fecha = fecha;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public double getCash() {
+        return cash;
+    }
+
+    public void setCash(double cash) {
+        this.cash = cash;
+    }
+
+    @Override
+    public String toString() {
+        return "jugador{" + "nombre=" + nombre + ", correo=" + correo + ", pais=" + pais + ", fecha=" + fecha + "cash" + cash + '}';
+    }
+    
+}
