@@ -10,6 +10,7 @@ import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JColorChooser;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -103,6 +104,11 @@ public class Garage extends javax.swing.JFrame {
         cb_garage = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
+        jPanel10 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jl_carro = new javax.swing.JList<>();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jl_carrosdejugador = new javax.swing.JList<>();
         jPanel7 = new javax.swing.JPanel();
         jb_salirmod = new javax.swing.JButton();
         LoginA = new javax.swing.JPanel();
@@ -653,6 +659,33 @@ public class Garage extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Garage", jPanel8);
 
+        jScrollPane3.setViewportView(jl_carro);
+
+        jScrollPane4.setViewportView(jl_carrosdejugador);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane3)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Compra y Venta", jPanel10);
+
         jb_salirmod.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jb_salirmod.setText("Salir");
         jb_salirmod.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -836,6 +869,15 @@ public class Garage extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(Admin, "Carro añadido");
         } else {
             carros.add(new carro("Agencia", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
+            DefaultTableModel model = (DefaultTableModel)Carrosporjugador.getModel();
+            Object [] data = new Object[5];
+            data[0] = cb_marca.getSelectedItem();
+            data[1] = cb_modelo.getSelectedItem();
+            data[2] = carro;
+            data[3] = dc_fechacarro;
+            data[4] = "Agencia";
+            model.addRow(data);
+            Carrosporjugador.setModel(model);
             JOptionPane.showMessageDialog(Admin, "Carro añadido");
         }
     }//GEN-LAST:event_jb_addcarMouseClicked
@@ -1124,6 +1166,7 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1134,6 +1177,8 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton jb_addcar;
@@ -1146,6 +1191,8 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JButton jb_moduser;
     private javax.swing.JButton jb_salirA;
     private javax.swing.JButton jb_salirmod;
+    private javax.swing.JList<String> jl_carro;
+    private javax.swing.JList<String> jl_carrosdejugador;
     private javax.swing.JPasswordField pf_cpass;
     private javax.swing.JPasswordField pf_modpass;
     private javax.swing.JPasswordField pf_pass;
