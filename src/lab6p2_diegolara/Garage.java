@@ -17,12 +17,12 @@ import javax.swing.table.DefaultTableModel;
  * @author diego
  */
 public class Garage extends javax.swing.JFrame {
-    
+
     Color carro;
-    
+
     public Garage() {
         initComponents();
-        
+
     }
 
     /**
@@ -50,6 +50,7 @@ public class Garage extends javax.swing.JFrame {
         pf_cpass = new javax.swing.JPasswordField();
         jLabel10 = new javax.swing.JLabel();
         jb_crear = new javax.swing.JButton();
+        jb_userlogin = new javax.swing.JButton();
         Admin = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -105,10 +106,10 @@ public class Garage extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jPanel10 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jl_carro = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
         jl_carrosdejugador = new javax.swing.JList<>();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jt_compra = new javax.swing.JTable();
         jPanel7 = new javax.swing.JPanel();
         jb_salirmod = new javax.swing.JButton();
         LoginA = new javax.swing.JPanel();
@@ -152,6 +153,14 @@ public class Garage extends javax.swing.JFrame {
             }
         });
 
+        jb_userlogin.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jb_userlogin.setText("User Login");
+        jb_userlogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_userloginMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout bgLayout = new javax.swing.GroupLayout(bg);
         bg.setLayout(bgLayout);
         bgLayout.setHorizontalGroup(
@@ -185,18 +194,17 @@ public class Garage extends javax.swing.JFrame {
                             .addComponent(jLabel9))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(bgLayout.createSequentialGroup()
+                                .addComponent(jb_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(53, 53, 53)
+                                .addComponent(jb_userlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(tf_user, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                             .addComponent(pf_cpass))))
                 .addGap(314, 314, 314))
             .addGroup(bgLayout.createSequentialGroup()
-                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(307, 307, 307)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(bgLayout.createSequentialGroup()
-                        .addGap(314, 314, 314)
-                        .addComponent(jb_crear, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(307, 307, 307)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(373, Short.MAX_VALUE))
         );
         bgLayout.setVerticalGroup(
             bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -233,7 +241,9 @@ public class Garage extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(pf_cpass, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
-                .addComponent(jb_crear)
+                .addGroup(bgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jb_crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jb_userlogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(112, 112, 112))
         );
 
@@ -659,28 +669,42 @@ public class Garage extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Garage", jPanel8);
 
-        jScrollPane3.setViewportView(jl_carro);
-
         jScrollPane4.setViewportView(jl_carrosdejugador);
+
+        jt_compra.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Marca", "Modelo", "Color", "Año", "Tipo"
+            }
+        ));
+        jScrollPane5.setViewportView(jt_compra);
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 533, Short.MAX_VALUE))
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 533, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
@@ -863,21 +887,22 @@ public class Garage extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearMouseClicked
 
     private void jb_addcarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_addcarMouseClicked
-        
+
         if (cb_tipo.getSelectedItem().toString().equals("Reconstruido")) {
             carros.add(new carro("Reconstruido", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
             JOptionPane.showMessageDialog(Admin, "Carro añadido");
         } else {
             carros.add(new carro("Agencia", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
-            DefaultTableModel model = (DefaultTableModel)Carrosporjugador.getModel();
-            Object [] data = new Object[5];
+            DefaultTableModel model = (DefaultTableModel) jt_compra.getModel();
+            Object[] data = new Object[5];
             data[0] = cb_marca.getSelectedItem();
             data[1] = cb_modelo.getSelectedItem();
             data[2] = carro;
             data[3] = dc_fechacarro;
             data[4] = "Agencia";
             model.addRow(data);
-            Carrosporjugador.setModel(model);
+
+            jt_compra.setModel(model);
             JOptionPane.showMessageDialog(Admin, "Carro añadido");
         }
     }//GEN-LAST:event_jb_addcarMouseClicked
@@ -1077,12 +1102,18 @@ public class Garage extends javax.swing.JFrame {
     private void jb_salirmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_salirmodMouseClicked
         CrudJugador.setVisible(false);
         this.setVisible(true);
-        
+
     }//GEN-LAST:event_jb_salirmodMouseClicked
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jb_userloginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_userloginMouseClicked
+        CreateUser.setVisible(false);
+        LoginU.pack();
+        LoginU.setVisible(true);
+    }//GEN-LAST:event_jb_userloginMouseClicked
 
     /**
      * @param args the command line arguments
@@ -1177,8 +1208,8 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton jb_addcar;
@@ -1191,8 +1222,9 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JButton jb_moduser;
     private javax.swing.JButton jb_salirA;
     private javax.swing.JButton jb_salirmod;
-    private javax.swing.JList<String> jl_carro;
+    private javax.swing.JButton jb_userlogin;
     private javax.swing.JList<String> jl_carrosdejugador;
+    private javax.swing.JTable jt_compra;
     private javax.swing.JPasswordField pf_cpass;
     private javax.swing.JPasswordField pf_modpass;
     private javax.swing.JPasswordField pf_pass;
