@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  * @author diego
  */
 public class Garage extends javax.swing.JFrame {
-
+    
     Color carro;
-
+    
     public Garage() {
         initComponents();
-
+        
     }
 
     /**
@@ -89,12 +89,22 @@ public class Garage extends javax.swing.JFrame {
         tf_modcorreo = new javax.swing.JTextField();
         tf_modpais = new javax.swing.JTextField();
         jb_mod = new javax.swing.JButton();
-        cb_moduser = new javax.swing.JComboBox<>();
+        cb_modjugador = new javax.swing.JComboBox<>();
         jPanel9 = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         tf_moduser = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         pf_modpass = new javax.swing.JPasswordField();
+        jb_moduser = new javax.swing.JButton();
+        cb_moduser = new javax.swing.JComboBox<>();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Carrosporjugador = new javax.swing.JTable();
+        cb_garage = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jPanel7 = new javax.swing.JPanel();
+        jb_salirmod = new javax.swing.JButton();
         LoginA = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jb_confirmar = new javax.swing.JButton();
@@ -103,6 +113,9 @@ public class Garage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         pf_pass = new javax.swing.JPasswordField();
         tf_admin = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        CreateUser.setPreferredSize(new java.awt.Dimension(841, 609));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setText("Nombre: ");
@@ -423,7 +436,13 @@ public class Garage extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel20.setText("Login User");
 
+        jb_confirmu.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jb_confirmu.setText("Confirmar");
+        jb_confirmu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_confirmuMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -461,7 +480,7 @@ public class Garage extends javax.swing.JFrame {
                     .addComponent(pf_userpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(73, 73, 73)
                 .addComponent(jb_confirmu)
-                .addContainerGap(212, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout LoginULayout = new javax.swing.GroupLayout(LoginU.getContentPane());
@@ -514,14 +533,14 @@ public class Garage extends javax.swing.JFrame {
                     .addComponent(tf_modcorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                     .addComponent(tf_modpais, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                     .addComponent(jb_mod)
-                    .addComponent(cb_moduser, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cb_modjugador, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(240, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(55, 55, 55)
-                .addComponent(cb_moduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_modjugador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(58, 58, 58)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_modname, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -539,7 +558,7 @@ public class Garage extends javax.swing.JFrame {
                 .addGap(124, 124, 124))
         );
 
-        jTabbedPane2.addTab("Modificar Nombre", jPanel5);
+        jTabbedPane2.addTab("Modificar Jugador", jPanel5);
 
         jLabel24.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel24.setText("Nuevo Usuario:");
@@ -547,36 +566,119 @@ public class Garage extends javax.swing.JFrame {
         jLabel25.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
         jLabel25.setText("Nuevo Pass:");
 
+        jb_moduser.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jb_moduser.setText("Modificar");
+        jb_moduser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_moduserMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(49, 49, 49)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(tf_moduser)
-                    .addComponent(pf_modpass, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE))
-                .addContainerGap(277, Short.MAX_VALUE))
+                    .addComponent(pf_modpass)
+                    .addComponent(jb_moduser, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cb_moduser, 0, 297, Short.MAX_VALUE))
+                .addContainerGap(276, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
-                .addGap(66, 66, 66)
+                .addGap(35, 35, 35)
+                .addComponent(cb_moduser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tf_moduser))
+                    .addComponent(tf_moduser, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(69, 69, 69)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(pf_modpass))
-                .addGap(400, 400, 400))
+                .addGap(68, 68, 68)
+                .addComponent(jb_moduser)
+                .addGap(244, 244, 244))
         );
 
         jTabbedPane2.addTab("Modificar Usuario", jPanel9);
+
+        Carrosporjugador.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "Marca", "Modelo", "Color", "Año", "Tipo"
+            }
+        ));
+        jScrollPane1.setViewportView(Carrosporjugador);
+
+        jScrollPane2.setViewportView(jList1);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cb_garage, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 347, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(cb_garage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane1))
+                .addGap(34, 34, 34))
+        );
+
+        jTabbedPane2.addTab("Garage", jPanel8);
+
+        jb_salirmod.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        jb_salirmod.setText("Salir");
+        jb_salirmod.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_salirmodMouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(jb_salirmod, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(146, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addComponent(jb_salirmod, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(148, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Salir", jPanel7);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -629,20 +731,18 @@ public class Garage extends javax.swing.JFrame {
         jLabel3.setText("Password");
         jLabel3.setToolTipText("");
 
+        jButton1.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jButton1.setText("X");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout LoginALayout = new javax.swing.GroupLayout(LoginA);
         LoginA.setLayout(LoginALayout);
         LoginALayout.setHorizontalGroup(
             LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LoginALayout.createSequentialGroup()
-                .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginALayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jb_createuser, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(LoginALayout.createSequentialGroup()
-                        .addGap(344, 344, 344)
-                        .addComponent(jb_confirmar)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
             .addGroup(LoginALayout.createSequentialGroup()
                 .addGap(116, 116, 116)
                 .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -654,14 +754,28 @@ public class Garage extends javax.swing.JFrame {
                     .addComponent(tf_admin, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginALayout.createSequentialGroup()
-                .addContainerGap(315, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(310, 310, 310))
+                .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LoginALayout.createSequentialGroup()
+                        .addGap(344, 344, 344)
+                        .addComponent(jb_confirmar)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(LoginALayout.createSequentialGroup()
+                        .addContainerGap(315, Short.MAX_VALUE)
+                        .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jb_createuser, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(LoginALayout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(299, 299, 299)))))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LoginALayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1))
         );
         LoginALayout.setVerticalGroup(
             LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(LoginALayout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
                 .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -671,7 +785,7 @@ public class Garage extends javax.swing.JFrame {
                 .addGroup(LoginALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(pf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 99, Short.MAX_VALUE)
                 .addComponent(jb_confirmar)
                 .addGap(104, 104, 104)
                 .addComponent(jb_createuser, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -706,12 +820,17 @@ public class Garage extends javax.swing.JFrame {
         } else {
             jugadores.add(new jugador(tf_name.getText(), tf_correo.getText(), tf_pais.getText(), dc_fecha.getDate(), tf_user.getText(), pf_cpass.getText()));
             cb_user.addItem(tf_user.getText());
-
+            cb_modjugador.addItem(tf_name.getText());
+            cb_moduser.addItem(tf_user.getText());
+            cb_garage.addItem(tf_user.getText());
+            CreateUser.setVisible(false);
+            CrudJugador.pack();
+            CrudJugador.setVisible(true);
         }
     }//GEN-LAST:event_jb_crearMouseClicked
 
     private void jb_addcarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_addcarMouseClicked
-
+        
         if (cb_tipo.getSelectedItem().toString().equals("Reconstruido")) {
             carros.add(new carro("Reconstruido", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
             JOptionPane.showMessageDialog(Admin, "Carro añadido");
@@ -864,8 +983,64 @@ public class Garage extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_salirAMouseClicked
 
     private void jb_modMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_modMouseClicked
-        
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        if (jugadores.get(cb_modjugador.getSelectedIndex()).getNombre().equals("")) {
+            JOptionPane.showMessageDialog(CrudJugador, "Agregue algo");
+        } else {
+            jugadores.get(cb_modjugador.getSelectedIndex()).setNombre(tf_modname.getText());
+            cb_modjugador.setModel(model);
+            cb_modjugador.addItem(tf_modname.getText());
+            tf_modname.setText("");
+        }
+        if (jugadores.get(cb_modjugador.getSelectedIndex()).getCorreo().equals("")) {
+            JOptionPane.showMessageDialog(CrudJugador, "Agregue algo");
+        } else {
+            jugadores.get(cb_modjugador.getSelectedIndex()).setNombre(tf_modcorreo.getText());
+            tf_modcorreo.setText("");
+        }
+        if (jugadores.get(cb_modjugador.getSelectedIndex()).getCorreo().equals("")) {
+            JOptionPane.showMessageDialog(CrudJugador, "Agregue algo");
+        } else {
+            jugadores.get(cb_modjugador.getSelectedIndex()).setNombre(tf_modpais.getText());
+            tf_modpais.setText("");
+        }
+        JOptionPane.showMessageDialog(CrudJugador, "Modificado exitosamente");
     }//GEN-LAST:event_jb_modMouseClicked
+
+    private void jb_confirmuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_confirmuMouseClicked
+        LoginU.setVisible(false);
+        CrudJugador.pack();
+        CrudJugador.setVisible(true);
+    }//GEN-LAST:event_jb_confirmuMouseClicked
+
+    private void jb_moduserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_moduserMouseClicked
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        if (jugadores.get(cb_moduser.getSelectedIndex()).getUser().equals("")) {
+            JOptionPane.showMessageDialog(CrudJugador, "Agregue algo");
+        } else {
+            jugadores.get(cb_moduser.getSelectedIndex()).setUser(tf_user.getText());
+            cb_moduser.setModel(model);
+            cb_moduser.addItem(tf_moduser.getText());
+            tf_moduser.setText("");
+        }
+        if (jugadores.get(cb_moduser.getSelectedIndex()).getPass().equals("")) {
+            JOptionPane.showMessageDialog(CrudJugador, "Agregue algo");
+        } else {
+            jugadores.get(cb_moduser.getSelectedIndex()).setPass(pf_modpass.getText());
+            pf_modpass.setText("");
+        }
+        JOptionPane.showMessageDialog(CrudJugador, "Modificado exitosamente");
+    }//GEN-LAST:event_jb_moduserMouseClicked
+
+    private void jb_salirmodMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_salirmodMouseClicked
+        CrudJugador.setVisible(false);
+        this.setVisible(true);
+        
+    }//GEN-LAST:event_jb_salirmodMouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -905,19 +1080,23 @@ public class Garage extends javax.swing.JFrame {
     ArrayList<carro> carros = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog Admin;
+    private javax.swing.JTable Carrosporjugador;
     private javax.swing.JDialog CreateUser;
     private javax.swing.JDialog CrudJugador;
     private javax.swing.JPanel LoginA;
     private javax.swing.JDialog LoginU;
     private javax.swing.JPanel bg;
+    private javax.swing.JComboBox<String> cb_garage;
     private javax.swing.JComboBox<String> cb_marca;
     private javax.swing.JComboBox<String> cb_modelo;
+    private javax.swing.JComboBox<String> cb_modjugador;
     private javax.swing.JComboBox<String> cb_moduser;
     private javax.swing.JComboBox<String> cb_pais;
     private javax.swing.JComboBox<String> cb_tipo;
     private javax.swing.JComboBox<String> cb_user;
     private com.toedter.calendar.JDateChooser dc_fecha;
     private com.toedter.calendar.JDateChooser dc_fechacarro;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -943,13 +1122,18 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JButton jb_addcar;
@@ -959,7 +1143,9 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JButton jb_crear;
     private javax.swing.JButton jb_createuser;
     private javax.swing.JButton jb_mod;
+    private javax.swing.JButton jb_moduser;
     private javax.swing.JButton jb_salirA;
+    private javax.swing.JButton jb_salirmod;
     private javax.swing.JPasswordField pf_cpass;
     private javax.swing.JPasswordField pf_modpass;
     private javax.swing.JPasswordField pf_pass;
