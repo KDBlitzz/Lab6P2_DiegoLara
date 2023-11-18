@@ -17,9 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class Garage extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Garage
-     */
+    Color carro;
+
     public Garage() {
         initComponents();
 
@@ -65,10 +64,10 @@ public class Garage extends javax.swing.JFrame {
         cb_pais = new javax.swing.JComboBox<>();
         cb_modelo = new javax.swing.JComboBox<>();
         cb_marca = new javax.swing.JComboBox<>();
-        ff_precio = new javax.swing.JFormattedTextField();
         jb_color = new javax.swing.JButton();
         dc_fechacarro = new com.toedter.calendar.JDateChooser();
         jb_addcar = new javax.swing.JButton();
+        tf_precio = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         LoginU = new javax.swing.JDialog();
         jPanel3 = new javax.swing.JPanel();
@@ -86,8 +85,6 @@ public class Garage extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         pf_pass = new javax.swing.JPasswordField();
         tf_admin = new javax.swing.JTextField();
-
-        CreateUser.setPreferredSize(new java.awt.Dimension(841, 609));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setText("Nombre: ");
@@ -252,8 +249,6 @@ public class Garage extends javax.swing.JFrame {
             }
         });
 
-        ff_precio.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
         jb_color.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jb_color.setText("Escoja Color");
         jb_color.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -285,7 +280,7 @@ public class Garage extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createSequentialGroup()
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(ff_precio))
+                            .addComponent(tf_precio))
                         .addGroup(jPanel6Layout.createSequentialGroup()
                             .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -330,9 +325,11 @@ public class Garage extends javax.swing.JFrame {
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cb_modelo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ff_precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addComponent(tf_precio)
+                        .addGap(4, 4, 4)))
                 .addGap(26, 26, 26)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,8 +379,6 @@ public class Garage extends javax.swing.JFrame {
             AdminLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
-        LoginU.setPreferredSize(new java.awt.Dimension(841, 609));
 
         jLabel18.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel18.setText("Username");
@@ -557,12 +552,13 @@ public class Garage extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_crearMouseClicked
 
     private void jb_addcarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_addcarMouseClicked
-        String reconstruido = "reconstruido";
-        String agencia = "agencia";
-        if (cb_tipo.getSelectedItem().toString().equals("Reconstruido")) {
-//            carros.add(new carro("Reconstruido",cb_marca.getSelectedItem().toString(),cb_modelo.getSelectedItem().toString(),JColorChooser.showDialog(, agencia, Color.yellow)))
-        } else {
 
+        if (cb_tipo.getSelectedItem().toString().equals("Reconstruido")) {
+            carros.add(new carro("Reconstruido", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
+            JOptionPane.showMessageDialog(Admin, "Carro añadido");
+        } else {
+            carros.add(new carro("Agencia", cb_marca.getSelectedItem().toString(), cb_modelo.getSelectedItem().toString(), carro, Double.parseDouble(tf_precio.getText()), cb_pais.getSelectedItem().toString(), dc_fechacarro.getDate()));
+            JOptionPane.showMessageDialog(Admin, "Carro añadido");
         }
     }//GEN-LAST:event_jb_addcarMouseClicked
 
@@ -577,7 +573,7 @@ public class Garage extends javax.swing.JFrame {
     }//GEN-LAST:event_jb_confirmarMouseClicked
 
     private void jb_colorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_colorMouseClicked
-        JColorChooser.showDialog(Admin, "Escoja color", Color.yellow);
+        carro = JColorChooser.showDialog(Admin, "Escoja color", Color.yellow);
     }//GEN-LAST:event_jb_colorMouseClicked
 
     private void cb_paisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_paisActionPerformed
@@ -587,42 +583,119 @@ public class Garage extends javax.swing.JFrame {
             cb_marca.addItem("Ford");
             cb_marca.addItem("Chevrolet");
             cb_marca.addItem("ACORH");
-        } else if(cb_pais.getSelectedItem().toString().equals("Japon")) {
+        } else if (cb_pais.getSelectedItem().toString().equals("Japon")) {
             cb_marca.setModel(model);
-            cb_marca.addItem("Subro");
+            cb_marca.addItem("Suboru");
             cb_marca.addItem("Toyota");
             cb_marca.addItem("Honda");
             cb_marca.addItem("Mitsubishi");
             cb_marca.addItem("Nisson");
-        } else if(cb_pais.getSelectedItem().toString().equals("Italia")) {
+        } else if (cb_pais.getSelectedItem().toString().equals("Italia")) {
             cb_marca.setModel(model);
             cb_marca.addItem("Ferrari");
             cb_marca.addItem("Lamborghini");
-        } else if(cb_pais.getSelectedItem().toString().equals("Alemania")) {
+        } else if (cb_pais.getSelectedItem().toString().equals("Alemania")) {
             cb_marca.setModel(model);
             cb_marca.addItem("BMW");
-            cb_marca.addItem("Mercedez-Benz");
+            cb_marca.addItem("Mercedes-Benz");
             cb_marca.addItem("VW");
             cb_marca.addItem("Audi");
             cb_marca.addItem("Porsche");
-        } else if(cb_pais.getSelectedItem().toString().equals("Francia")) {
+        } else if (cb_pais.getSelectedItem().toString().equals("Francia")) {
             cb_marca.setModel(model);
             cb_marca.addItem("Peugeot");
-        } else if(cb_pais.getSelectedItem().toString().equals("UK")) {
+            cb_modelo.addItem("206");
+        } else if (cb_pais.getSelectedItem().toString().equals("UK")) {
             cb_marca.setModel(model);
             cb_marca.addItem("Mini");
-        } else if(cb_pais.getSelectedItem().toString().equals("Sweeden")) {
+        } else if (cb_pais.getSelectedItem().toString().equals("Sweeden")) {
             cb_marca.setModel(model);
             cb_marca.addItem("Volvo");
         }
     }//GEN-LAST:event_cb_paisActionPerformed
 
     private void cb_marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_marcaActionPerformed
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
         if (cb_marca.getSelectedItem().toString().equals("Ford")) {
+            cb_modelo.setModel(model);
             cb_modelo.addItem("Mustang");
             cb_modelo.addItem("F-150");
-        } else if(cb_marca.getSelectedItem().toString().equals("Chevrolet")) {
-            
+        } else if (cb_marca.getSelectedItem().toString().equals("Chevrolet")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Camaro");
+            cb_modelo.addItem("Corvette");
+            if (cb_tipo.getSelectedItem().toString().equals("Reconstruido")) {
+                cb_modelo.addItem("Bel-Hir");
+            }
+        } else if (cb_marca.getSelectedItem().toString().equals("ACORH")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("NSX");
+        } else if (cb_marca.getSelectedItem().toString().equals("BMW")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("M3");
+            cb_modelo.addItem("X6");
+            cb_modelo.addItem("M5");
+        } else if (cb_marca.getSelectedItem().toString().equals("Mercedes-Benz")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("AMG");
+            cb_modelo.addItem("Clase C Cabrio");
+            cb_modelo.addItem("CLA Coupé");
+        } else if (cb_marca.getSelectedItem().toString().equals("VW")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Beetle");
+            cb_modelo.addItem("Nardo Concept");
+        } else if (cb_marca.getSelectedItem().toString().equals("Audi")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("R8");
+            cb_modelo.addItem("TT-COupe");
+        } else if (cb_marca.getSelectedItem().toString().equals("Porsche")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("All Carelo");
+            cb_modelo.addItem("978");
+        } else if (cb_marca.getSelectedItem().toString().equals("Mini")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Cooper");
+            cb_modelo.addItem("CountryMan");
+        } else if (cb_marca.getSelectedItem().toString().equals("Volvo cb_modelo.addItem(item);")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("C40");
+            cb_modelo.addItem("S60");
+            cb_modelo.addItem("V60");
+        } else if (cb_marca.getSelectedItem().toString().equals("Suboru")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("WPZ-X");
+            cb_modelo.addItem("Imprez");
+            cb_modelo.addItem("BRZ");
+        } else if (cb_marca.getSelectedItem().toString().equals("Toyota")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("GT-86");
+            cb_modelo.addItem("Supra");
+        } else if (cb_marca.getSelectedItem().toString().equals("Honda")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Civic Type-R");
+            cb_modelo.addItem("Indegra Type-R");
+            cb_modelo.addItem("CR-X");
+        } else if (cb_marca.getSelectedItem().toString().equals("Mitsubishi")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Lancer Evo");
+            cb_modelo.addItem("Mirage");
+        } else if (cb_marca.getSelectedItem().toString().equals("Nisson")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Skyline-GTR (R32 - R34)");
+            cb_modelo.addItem("GTR-R35");
+            cb_modelo.addItem("240SX");
+            cb_modelo.addItem("350Z");
+            cb_modelo.addItem("370Z");
+        } else if (cb_marca.getSelectedItem().toString().equals("Ferrari")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("La Ferrari");
+            cb_modelo.addItem("Testorroso");
+            cb_modelo.addItem("240");
+        } else if (cb_marca.getSelectedItem().toString().equals("Lamborghini")) {
+            cb_modelo.setModel(model);
+            cb_modelo.addItem("Diablo");
+            cb_modelo.addItem("Huracan");
+            cb_modelo.addItem("Murcielago");
         }
     }//GEN-LAST:event_cb_marcaActionPerformed
 
@@ -675,7 +748,6 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_user;
     private com.toedter.calendar.JDateChooser dc_fecha;
     private com.toedter.calendar.JDateChooser dc_fechacarro;
-    private javax.swing.JFormattedTextField ff_precio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -714,6 +786,7 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JTextField tf_correo;
     private javax.swing.JTextField tf_name;
     private javax.swing.JTextField tf_pais;
+    private javax.swing.JTextField tf_precio;
     private javax.swing.JTextField tf_user;
     // End of variables declaration//GEN-END:variables
 }
