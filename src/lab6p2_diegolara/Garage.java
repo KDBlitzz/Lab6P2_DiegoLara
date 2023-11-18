@@ -80,6 +80,7 @@ public class Garage extends javax.swing.JFrame {
         pf_userpass = new javax.swing.JPasswordField();
         jLabel20 = new javax.swing.JLabel();
         jb_confirmu = new javax.swing.JButton();
+        jb_regresar = new javax.swing.JButton();
         CrudJugador = new javax.swing.JDialog();
         jPanel4 = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -460,6 +461,13 @@ public class Garage extends javax.swing.JFrame {
             }
         });
 
+        jb_regresar.setText("Regresar");
+        jb_regresar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_regresarMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -467,24 +475,32 @@ public class Garage extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(318, 318, 318)
-                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(139, 139, 139)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel19)
-                            .addComponent(jLabel18))
-                        .addGap(86, 86, 86)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(cb_user, 0, 230, Short.MAX_VALUE)
-                            .addComponent(pf_userpass)
-                            .addComponent(jb_confirmu))))
-                .addContainerGap(301, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(318, 318, 318)
+                                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(139, 139, 139)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel18))
+                                .addGap(86, 86, 86)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(cb_user, 0, 230, Short.MAX_VALUE)
+                                    .addComponent(pf_userpass)
+                                    .addComponent(jb_confirmu))))
+                        .addGap(0, 290, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jb_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addContainerGap()
+                .addComponent(jb_regresar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel20)
                 .addGap(53, 53, 53)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1115,6 +1131,11 @@ public class Garage extends javax.swing.JFrame {
         LoginU.setVisible(true);
     }//GEN-LAST:event_jb_userloginMouseClicked
 
+    private void jb_regresarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_regresarMouseClicked
+        LoginU.setVisible(false);
+        this.setVisible(true);
+    }//GEN-LAST:event_jb_regresarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -1220,6 +1241,7 @@ public class Garage extends javax.swing.JFrame {
     private javax.swing.JButton jb_createuser;
     private javax.swing.JButton jb_mod;
     private javax.swing.JButton jb_moduser;
+    private javax.swing.JButton jb_regresar;
     private javax.swing.JButton jb_salirA;
     private javax.swing.JButton jb_salirmod;
     private javax.swing.JButton jb_userlogin;
